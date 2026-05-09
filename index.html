@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar-Rechner 2025 — Photovoltaik Rentabilität kostenlos berechnen</title>
+  <meta name="description" content="Berechne kostenlos, ob sich eine Photovoltaik-Anlage für dein Haus lohnt. Mit EEG-Vergütung 2025, Eigenverbrauch, Amortisation und 20-Jahres-Bilanz. Für alle Bundesländer.">
+  <meta name="keywords" content="Solaranlage Rechner, Photovoltaik Rechner, PV Rechner, Solaranlage rentabel, Photovoltaik Amortisation, EEG Vergütung 2025">
+  <meta name="author" content="Solar-Rechner.de">
+  <link rel="canonical" href="https://solar-rechner.de/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Solar-Rechner 2025 — Photovoltaik Rentabilität berechnen">
+  <meta property="og:description" content="Kostenloser Rechner: Lohnt sich eine PV-Anlage für dein Haus? Amortisation, Jahresertrag und 20-Jahres-Bilanz — live berechnet.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Solar-Rechner Deutschland 2025",
+    "description": "Kostenloser Photovoltaik Rentabilitätsrechner für deutsche Hausbesitzer",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "de"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --bg-warm: #FFF7ED;
+      --bg-dark: #0F172A;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --accent: #EA7C1E;
+      --accent-light: #FFEDD5;
+      --border: #E5E7EB;
+      --white: #FFFFFF;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 18px; color: var(--text); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .logo-dot { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: var(--white);
+      padding: 8px 20px; border-radius: 999px;
+      font-size: 14px; font-weight: 500; text-decoration: none;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      max-width: 1100px; margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 999px; margin-bottom: 1.25rem;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1.25rem; color: var(--text); }
+    .hero h1 span { color: var(--accent); }
+    .hero-desc { font-size: 17px; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.75; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+      padding: 13px 28px; border-radius: 999px;
+      font-size: 15px; font-weight: 500; text-decoration: none;
+      transition: transform .2s, opacity .2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      padding: 13px 24px; border-radius: 999px;
+      font-size: 15px; font-weight: 500; text-decoration: none;
+      border: 1.5px solid var(--border); transition: border-color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--text); }
+    .hero-stats {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    .hero-stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .hero-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    /* SECTION */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .75rem;
+    }
+    .section-title { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 800; margin-bottom: 1rem; }
+    .section-desc { font-size: 16px; color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; line-height: 1.75; }
+
+    /* CALCULATOR */
+    #rechner { background: var(--bg-warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .calc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .calc-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+    }
+    .calc-card-title {
+      font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .field { margin-bottom: 1rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 5px; }
+    .field select, .field input[type=text] {
+      width: 100%; padding: 9px 12px;
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-size: 14px;
+      outline: none; transition: border-color .2s;
+    }
+    .field select:focus, .field input:focus { border-color: var(--accent); }
+    .slider-wrap { display: flex; align-items: center; gap: 10px; }
+    .slider-wrap input[type=range] { flex: 1; -webkit-appearance: none; height: 4px; background: var(--border); border-radius: 2px; }
+    .slider-wrap input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 18px; height: 18px;
+      background: var(--accent); border-radius: 50%; cursor: pointer;
+    }
+    .slider-num { font-size: 14px; font-weight: 600; min-width: 70px; text-align: right; color: var(--text); }
+    .toggle-row { display: flex; align-items: center; gap: 10px; }
+    .toggle-row input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+    .toggle-row label { font-size: 14px; cursor: pointer; }
+    .result-highlight {
+      background: var(--bg-dark); color: var(--white);
+      border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem;
+    }
+    .result-main-label { font-size: 12px; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem; }
+    .result-main-num { font-family: 'Syne', sans-serif; font-size: 2.75rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .result-main-sub { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 4px; }
+    .result-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 600; padding: 4px 12px;
+      border-radius: 999px; margin-top: 1rem;
+    }
+    .badge-green { background: #D1FAE5; color: #065F46; }
+    .badge-amber { background: #FEF3C7; color: #92400E; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 1rem; }
+    .stat-box { background: var(--bg); border-radius: var(--radius-sm); padding: 10px 12px; }
+    .stat-label { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+    .stat-val { font-size: 16px; font-weight: 600; color: var(--text); }
+    .stat-sub { font-size: 10px; color: #94A3B8; }
+    .bar-section { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1rem; }
+    .bar-section h4 { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .bar-row-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+    .bar-row-label span:first-child { color: var(--text-muted); }
+    .bar-row-label span:last-child { font-weight: 600; }
+    .bar-track { height: 7px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+    .bar-fill { height: 100%; border-radius: 4px; transition: width .5s ease; }
+    .bilanz-total { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border); }
+    .bilanz-total span:first-child { font-size: 13px; color: var(--text-muted); }
+    .bilanz-total span:last-child { font-size: 17px; font-weight: 700; }
+    .cta-box {
+      background: var(--accent); border-radius: var(--radius); padding: 1.25rem;
+    }
+    .cta-box h4 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .cta-box p { font-size: 13px; color: rgba(255,255,255,.75); margin-bottom: 1rem; }
+    .cta-btn {
+      display: block; width: 100%; padding: 11px;
+      background: var(--white); color: var(--accent);
+      border: none; border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700;
+      cursor: pointer; text-align: center; text-decoration: none;
+      transition: opacity .2s;
+    }
+    .cta-btn:hover { opacity: .9; }
+    .cta-note { font-size: 10px; color: rgba(255,255,255,.5); margin-top: 6px; text-align: center; }
+
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent-light); color: var(--accent);
+      font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .step h3 { font-size: 17px; font-weight: 700; margin-bottom: .5rem; }
+    .step p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* FAQ */
+    #faq { background: var(--white); border-top: 1px solid var(--border); }
+    .faq-list { max-width: 720px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; padding: 1.25rem 0;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+      color: var(--text); text-align: left; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-q .faq-icon { flex-shrink: 0; font-size: 20px; color: var(--text-muted); transition: transform .25s; }
+    .faq-q.open .faq-icon { transform: rotate(45deg); color: var(--accent); }
+    .faq-a { display: none; padding-bottom: 1.25rem; font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+    .faq-a.open { display: block; }
+
+    /* BLOG TEASER */
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .blog-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem; text-decoration: none; color: inherit;
+      transition: transform .2s, box-shadow .2s; display: block;
+    }
+    .blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .blog-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .75rem;
+    }
+    .blog-card h3 { font-size: 16px; font-weight: 700; margin-bottom: .5rem; line-height: 1.4; }
+    .blog-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+    .blog-card-footer { margin-top: 1.25rem; font-size: 12px; color: var(--accent); font-weight: 500; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-dark); color: rgba(255,255,255,.55);
+      padding: 3rem 2rem; font-size: 13px;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+    .footer-brand { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: .75rem; }
+    .footer-desc { line-height: 1.7; margin-bottom: 0; }
+    .footer-col h4 { color: var(--white); font-size: 14px; font-weight: 600; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: .5rem; }
+    .footer-col ul a { color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08); font-size: 12px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { display: none; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 1.5rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      section { padding: 3rem 1rem; }
+      .hero { padding: 3rem 1rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">☀️ Solar<span class="logo-dot">Rechner</span></a>
+    <ul class="nav-links">
+      <li><a href="#rechner">Rechner</a></li>
+      <li><a href="#so-funktionierts">Wie es funktioniert</a></li>
+      <li><a href="#blog">Ratgeber</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#rechner" class="nav-cta">Jetzt berechnen</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-badge">☀️ Aktuell: EEG-Vergütung 2025</div>
+    <h1>Lohnt sich <span>Photovoltaik</span> für dein Haus?</h1>
+    <p class="hero-desc">Berechne kostenlos in 30 Sekunden, wie viel du mit einer Solaranlage sparst — mit den aktuellen Tarifen, deinem Bundesland und deinem Verbrauch.</p>
+    <div class="hero-actions">
+      <a href="#rechner" class="btn-primary">Jetzt kostenlos berechnen</a>
+      <a href="#so-funktionierts" class="btn-secondary">Wie funktioniert das?</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">8,11 ct</div>
+      <div class="hero-stat-label">EEG-Vergütung 2025 pro kWh (bis 10 kWp)</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">~10 J.</div>
+      <div class="hero-stat-label">Durchschnittliche Amortisation in Deutschland</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">€34/kWh</div>
+      <div class="hero-stat-label">Ø Strompreis 2025 in Deutschland</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">100 %</div>
+      <div class="hero-stat-label">Kostenlos & ohne Anmeldung</div>
+    </div>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<section id="rechner">
+  <div class="section-inner">
+    <div class="section-label">Photovoltaik-Rechner</div>
+    <h2 class="section-title">Rentabilität live berechnen</h2>
+    <p class="section-desc">Passe die Werte für dein Haus an — alle Ergebnisse werden sofort aktualisiert.</p>
+
+    <div class="calc-grid">
+      <!-- LEFT: Eingaben -->
+      <div style="display:flex;flex-direction:column;gap:1rem">
+
+        <div class="calc-card">
+          <div class="calc-card-title">📍 Standort & Dach</div>
+          <div class="field">
+            <label for="bl">Bundesland</label>
+            <select id="bl">
+              <option value="1080">Bayern</option>
+              <option value="1050">Baden-Württemberg</option>
+              <option value="1020">Saarland</option>
+              <option value="1010" selected>Rheinland-Pfalz</option>
+              <option value="990">Brandenburg / Sachsen</option>
+              <option value="980">Berlin / Sachsen-Anhalt / Thüringen</option>
+              <option value="970">Hessen</option>
+              <option value="960">Nordrhein-Westfalen</option>
+              <option value="940">Mecklenburg-Vorpommern</option>
+              <option value="920">Niedersachsen</option>
+              <option value="900">Hamburg / Bremen</option>
+              <option value="890">Schleswig-Holstein</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Verfügbare Dachfläche: <strong id="fl-val">40 m²</strong></label>
+            <div class="slider-wrap">
+              <input type="range" id="fl" min="10" max="200" step="5" value="40">
+              <span class="slider-num" style="display:none"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="au">Ausrichtung</label>
+            <select id="au">
+              <option value="1.0">Süd (optimal)</option>
+              <option value="0.95">Süd-West oder Süd-Ost</option>
+              <option value="0.85">West oder Ost</option>
+              <option value="0.70">Nord-West oder Nord-Ost</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ng">Dachneigung</label>
+            <select id="ng">
+              <option value="0.90">Flachdach (0–10°)</option>
+              <option value="0.97">Leicht geneigt (15–25°)</option>
+              <option value="1.0" selected>Optimal (30–40°)</option>
+              <option value="0.93">Steil (45–60°)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-card">
+          <div class="calc-card-title">⚡ Strom & Verbrauch</div>
+          <div class="field">
+            <label>Jahresstromverbrauch: <strong id="vb-val">4.000 kWh</strong></label>
+            <div class="slider-wrap">
+              <input type="range" id="vb" min="1000" max="15000" step="500" value="4000">
+            </div>
+            <p style="font-size:12px;color:var(--text-muted);margin-top:4px">Ø 2 Personen: 2.500 kWh · 4 Personen: 4.000 kWh</p>
+          </div>
+          <div class="field">
+            <label>Aktueller Strompreis: <strong id="pr-val">0,34 €/kWh</strong></label>
+            <div class="slider-wrap">
+              <input type="range" id="pr" min="0.20" max="0.50" step="0.01" value="0.34">
+            </div>
+          </div>
+          <div class="field">
+            <div class="toggle-row">
+              <input type="checkbox" id="bat">
+              <label for="bat">Mit Batteriespeicher</label>
+            </div>
+          </div>
+          <div class="field" id="bat-group" style="display:none">
+            <label>Speicherkapazität: <strong id="sp-val">10 kWh</strong></label>
+            <div class="slider-wrap">
+              <input type="range" id="sp" min="5" max="30" step="2.5" value="10">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Ergebnisse -->
+      <div style="display:flex;flex-direction:column;gap:1rem">
+
+        <div class="result-highlight">
+          <div class="result-main-label">Ersparnis + Einnahmen pro Jahr</div>
+          <div class="result-main-num" id="jg">—</div>
+          <div class="result-main-sub">Eigenverbrauch + Einspeisevergütung</div>
+          <div>
+            <span class="result-badge badge-green" id="vd">✓ Lohnt sich</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px">
+          <div class="calc-card" style="flex:1;padding:1rem">
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:2px">Anlagenleistung</div>
+            <div style="font-size:18px;font-weight:700" id="kwp">—</div>
+          </div>
+          <div class="calc-card" style="flex:1;padding:1rem">
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:2px">Amortisation</div>
+            <div style="font-size:18px;font-weight:700" id="am">—</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-label">☀️ Jahresertrag</div>
+            <div class="stat-val" id="se">—</div>
+            <div class="stat-sub">kWh/Jahr</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">🏠 Eigenverbrauch</div>
+            <div class="stat-val" id="ev">—</div>
+            <div class="stat-sub">gespart/Jahr</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">🔌 Einspeisung</div>
+            <div class="stat-val" id="es">—</div>
+            <div class="stat-sub">vergütet/Jahr</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">💶 Investition</div>
+            <div class="stat-val" id="iv">—</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">🌱 CO₂/Jahr</div>
+            <div class="stat-val" id="co">—</div>
+            <div class="stat-sub">kg eingespart</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">📈 20-J. Gewinn</div>
+            <div class="stat-val" id="ng20" style="font-size:14px">—</div>
+          </div>
+        </div>
+
+        <div class="bar-section">
+          <h4>20-Jahres-Bilanz</h4>
+          <div class="bar-row-label"><span>Gesamtinvestition</span><span id="bil">—</span></div>
+          <div class="bar-track"><div class="bar-fill" id="bari" style="background:#F87171"></div></div>
+          <div class="bar-row-label"><span>Gesamteinnahmen</span><span id="bel">—</span></div>
+          <div class="bar-track"><div class="bar-fill" id="bare" style="background:#4ADE80"></div></div>
+          <div class="bilanz-total">
+            <span>Nettogewinn nach 20 Jahren</span>
+            <span id="net">—</span>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h4>Kostenlose Angebote einholen</h4>
+          <p>Geprüfte Installateure aus deiner Region — kostenlos & unverbindlich vergleichen.</p>
+          <!-- ⚠️ AFFILIATE-LINK: Ersetze href mit deinem Affiliate-Link -->
+          <a href="https://www.google.com/search?q=Solaranlage+Installateur+%s" class="cta-btn" target="_blank" rel="noopener">
+            Jetzt 3 kostenlose Angebote erhalten →
+          </a>
+          <p class="cta-note">Kostenlos · Unverbindlich · Geprüfte Fachbetriebe</p>
+        </div>
+
+      </div>
+    </div>
+
+    <p style="font-size:12px;color:var(--text-muted);margin-top:1.5rem;text-align:center">
+      Alle Werte sind Richtwerte auf Basis öffentlich verfügbarer Daten. EEG-Einspeisevergütung: 8,11 ct/kWh (2025, Anlagen bis 10 kWp, Überschusseinspeisung). Keine Anlage- oder Steuerberatung.
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="so-funktionierts">
+  <div class="section-inner">
+    <div class="section-label">So funktioniert es</div>
+    <h2 class="section-title">In 3 Schritten zur Antwort</h2>
+    <p class="section-desc">Der Rechner nutzt reale Sonneneinstrahldaten nach Bundesland und aktuelle EEG-Tarife.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Dach & Standort eingeben</h3>
+        <p>Wähle dein Bundesland, die verfügbare Dachfläche und die Ausrichtung. Diese Werte bestimmen, wie viel Sonnenstrom deine Anlage erzeugen kann.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Stromverbrauch anpassen</h3>
+        <p>Gib deinen jährlichen Stromverbrauch und den aktuellen Strompreis ein. Der Rechner ermittelt daraus deinen Eigenverbrauchsanteil und die mögliche Einsparung.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Ergebnis & Angebote</h3>
+        <p>Du siehst sofort Jahresertrag, Amortisationsdauer und 20-Jahres-Bilanz. Im nächsten Schritt kannst du kostenlose Angebote von Installateuren einholen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">Häufige Fragen</div>
+    <h2 class="section-title">Alles zu Photovoltaik & Rentabilität</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Wie viel kostet eine Solaranlage 2025?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Die Kosten für eine Photovoltaik-Anlage liegen 2025 bei etwa 1.700–2.000 € pro installiertem Kilowattpeak (kWp) inklusive Montage, Wechselrichter und Netzanmeldung. Eine typische 8-kWp-Anlage für ein Einfamilienhaus kostet demnach rund 14.000–16.000 €. Mit Batteriespeicher addieren sich ca. 800–1.000 € pro kWh Speicherkapazität.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Wie hoch ist die Einspeisevergütung 2025?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Die EEG-Einspeisevergütung für neue Anlagen bis 10 kWp beträgt 2025 bei Überschusseinspeisung (Teileinspeisung) etwa 8,11 ct/kWh. Bei Volleinspeisung sind es rund 12,87 ct/kWh. Die Sätze werden halbjährlich angepasst. Mit der Überschusseinspeisung gibst du nur den Strom ins Netz, den du nicht selbst verbrauchst — das ist für die meisten Haushalte die sinnvollere Variante.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Lohnt sich ein Batteriespeicher?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Ein Batteriespeicher erhöht den Eigenverbrauchsanteil von ca. 25–30 % auf 55–70 %. Das bedeutet mehr eingesparter Strom zum Marktpreis (34 ct/kWh) statt die günstigere Einspeisevergütung (8 ct/kWh) zu erhalten. Die Amortisation des Speichers allein dauert 12–18 Jahre, er verlängert jedoch die Anlagenamortisation insgesamt nur leicht. Empfehlung: Wenn Budget vorhanden, lohnt es sich — besonders bei hohem Stromverbrauch am Abend.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Wie lange dauert die Amortisation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Die Amortisationsdauer einer Solaranlage liegt in Deutschland 2025 typischerweise bei 9–13 Jahren. In sonnenreichen Bundesländern wie Bayern oder Rheinland-Pfalz kann sie kürzer ausfallen. Da Solaranlagen 25–30 Jahre halten, ergibt sich nach der Amortisation ein langer Zeitraum mit reinem Gewinn. Unser Rechner zeigt dir deine persönliche Amortisationsdauer.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Welche Förderungen gibt es für Solaranlagen in Deutschland?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Neben der EEG-Einspeisevergütung bietet die KfW zinsgünstige Kredite für PV-Anlagen (z.B. KfW 270). Viele Bundesländer haben eigene Förderprogramme — in Rheinland-Pfalz beispielsweise über die Investitions- und Strukturbank (ISB). Seit 2023 sind Solaranlagen auf Wohngebäuden bis 30 kWp zudem von der Mehrwertsteuer befreit (0 % MwSt.), was die Investitionskosten deutlich senkt.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Muss ich Steuern auf Solareinnahmen zahlen?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Seit Januar 2023 sind Einnahmen aus PV-Anlagen bis 30 kWp auf Einfamilienhäusern einkommensteuerlich befreit. Das vereinfacht die Steuerdeklaration erheblich. Die Umsatzsteuer auf die Anlage beträgt seit 2023 ebenfalls 0 %. Für größere Anlagen und gewerbliche Nutzung gelten andere Regelungen — hier empfiehlt sich die Beratung durch einen Steuerberater.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG TEASER -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="section-label">Ratgeber</div>
+    <h2 class="section-title">Alles über Solar in Deutschland</h2>
+    <p class="section-desc">Aktuelle Artikel zu Photovoltaik, EEG-Vergütung und Rentabilität.</p>
+    <div class="blog-grid">
+      <a href="blog/lohnt-sich-solar-rheinland-pfalz.html" class="blog-card">
+        <div class="blog-tag">Standort & Ertrag</div>
+        <h3>Lohnt sich eine Solaranlage in Rheinland-Pfalz? (2025)</h3>
+        <p>Sonnenstunden, Ertragsdaten und eine echte Beispielrechnung für Hausbesitzer in RLP.</p>
+        <div class="blog-card-footer">Artikel lesen →</div>
+      </a>
+      <a href="blog/photovoltaik-amortisation-berechnen.html" class="blog-card">
+        <div class="blog-tag">Finanzierung & ROI</div>
+        <h3>Photovoltaik Amortisation berechnen — so geht's richtig (2025)</h3>
+        <p>Welche Faktoren die Amortisation beeinflussen und wie du sie korrekt berechnest.</p>
+        <div class="blog-card-footer">Artikel lesen →</div>
+      </a>
+      <a href="blog/eeg-einspeisung-2025.html" class="blog-card">
+        <div class="blog-tag">EEG & Vergütung</div>
+        <h3>EEG Einspeisevergütung 2025: Wie viel bekommst du für deinen Solarstrom?</h3>
+        <p>Aktuelle Tarife, Unterschied zwischen Voll- und Überschusseinspeisung — einfach erklärt.</p>
+        <div class="blog-card-footer">Artikel lesen →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">☀️ SolarRechner</div>
+      <p class="footer-desc">Kostenloser Photovoltaik-Rentabilitätsrechner für Hausbesitzer in Deutschland. Alle Berechnungen basieren auf öffentlich verfügbaren Daten und aktuellen EEG-Tarifen.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="#rechner">PV-Rechner</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#blog">Ratgeber</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Datenschutz</a></li>
+        <li><a href="#">Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 SolarRechner.de · Keine Anlage- oder Steuerberatung. Alle Angaben ohne Gewähr. EEG-Vergütung: 8,11 ct/kWh (Stand: 2025, Anlagen bis 10 kWp, Überschusseinspeisung).</p>
+  </div>
+</footer>
+
+<!-- CALCULATOR LOGIC -->
+<script>
+const VERGUETUNG = 0.0811, KKP = 1850, BKH = 800;
+function de(n) { return new Intl.NumberFormat('de-DE').format(Math.round(n)); }
+function eur(n) { return new Intl.NumberFormat('de-DE', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(Math.round(n)); }
+
+function upd() {
+  const bl = +document.getElementById('bl').value;
+  const fl = +document.getElementById('fl').value;
+  const au = +document.getElementById('au').value;
+  const ng = +document.getElementById('ng').value;
+  const vb = +document.getElementById('vb').value;
+  const pr = +document.getElementById('pr').value;
+  const bat = document.getElementById('bat').checked;
+  const sp = +document.getElementById('sp').value;
+
+  document.getElementById('fl-val').textContent = de(fl) + ' m²';
+  document.getElementById('vb-val').textContent = de(vb) + ' kWh';
+  document.getElementById('pr-val').textContent = pr.toFixed(2).replace('.', ',') + ' €/kWh';
+  document.getElementById('sp-val').textContent = (sp % 1 === 0 ? sp : sp.toFixed(1)) + ' kWh';
+
+  const kWp = fl * 0.20;
+  const ertrag = kWp * bl * au * ng;
+  const eq = bat ? 0.62 : 0.28;
+  const eigen = Math.min(vb, ertrag * eq);
+  const einsp = ertrag - eigen;
+  const spar = eigen * pr;
+  const egeld = einsp * VERGUETUNG;
+  const jg = spar + egeld;
+  const batk = bat ? sp * BKH : 0;
+  const inv = kWp * KKP + batk;
+  const amort = inv / jg;
+  const e20 = jg * 20;
+  const netto = e20 - inv;
+  const co2 = ertrag * 0.380;
+
+  document.getElementById('jg').textContent = eur(jg);
+  document.getElementById('kwp').textContent = kWp.toFixed(1) + ' kWp';
+  document.getElementById('am').textContent = amort.toFixed(1) + ' Jahre';
+
+  const vd = document.getElementById('vd');
+  if (amort <= 12) { vd.className = 'result-badge badge-green'; vd.textContent = '✓ Sehr rentabel'; }
+  else if (amort <= 16) { vd.className = 'result-badge badge-green'; vd.textContent = '✓ Lohnt sich'; }
+  else { vd.className = 'result-badge badge-amber'; vd.textContent = '⚠ Grenzwertig'; }
+
+  document.getElementById('se').textContent = de(ertrag);
+  document.getElementById('ev').textContent = eur(spar);
+  document.getElementById('es').textContent = eur(egeld);
+  document.getElementById('iv').textContent = eur(inv);
+  document.getElementById('co').textContent = de(co2);
+
+  const ng20 = document.getElementById('ng20');
+  ng20.textContent = eur(netto);
+  ng20.style.color = netto > 0 ? '#16A34A' : '#DC2626';
+
+  const mx = Math.max(inv, e20);
+  document.getElementById('bari').style.width = (inv / mx * 100).toFixed(1) + '%';
+  document.getElementById('bare').style.width = (e20 / mx * 100).toFixed(1) + '%';
+  document.getElementById('bil').textContent = eur(inv);
+  document.getElementById('bel').textContent = eur(e20);
+
+  const net = document.getElementById('net');
+  net.textContent = eur(netto);
+  net.style.color = netto > 0 ? '#16A34A' : '#DC2626';
+}
+
+['bl','fl','au','ng','vb','pr','sp'].forEach(id => document.getElementById(id).addEventListener('input', upd));
+document.getElementById('bat').addEventListener('change', function () {
+  document.getElementById('bat-group').style.display = this.checked ? 'block' : 'none';
+  upd();
+});
+
+function toggleFaq(btn) {
+  const a = btn.nextElementSibling;
+  const isOpen = a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(el => el.classList.remove('open'));
+  document.querySelectorAll('.faq-q.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) { a.classList.add('open'); btn.classList.add('open'); }
+}
+
+upd();
+</script>
+</body>
+</html>
