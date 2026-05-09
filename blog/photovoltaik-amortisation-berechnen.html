@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photovoltaik Amortisation berechnen 2025 — Die vollständige Anleitung | SolarRechner</title>
+  <meta name="description" content="Wie berechnet man die Amortisation einer Photovoltaik-Anlage korrekt? Formel, Beispiele, Fehler vermeiden — alles erklärt für 2025.">
+  <meta name="keywords" content="Photovoltaik Amortisation berechnen, Solaranlage Amortisation, PV Anlage Amortisationszeit, Photovoltaik Rentabilität, Solar Payback Period">
+  <link rel="canonical" href="https://solar-rechner.de/blog/photovoltaik-amortisation-berechnen.html">
+  <meta property="og:title" content="Photovoltaik Amortisation berechnen 2025 — Die vollständige Anleitung">
+  <meta property="og:description" content="Welche Faktoren die Amortisation beeinflussen und wie du sie korrekt berechnest.">
+  <meta property="og:type" content="article">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Photovoltaik Amortisation berechnen 2025 — Die vollständige Anleitung",
+    "author": { "@type": "Organization", "name": "SolarRechner.de" },
+    "publisher": { "@type": "Organization", "name": "SolarRechner.de" },
+    "datePublished": "2025-02-01",
+    "dateModified": "2025-05-01"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#FAFAF8; --bg-warm:#FFF7ED; --text:#0F172A; --muted:#64748B; --accent:#EA7C1E; --border:#E5E7EB; --white:#fff; --radius:12px; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    h1,h2,h3 { font-family:'Syne',sans-serif; line-height:1.2; }
+    nav { background:var(--white); border-bottom:1px solid var(--border); padding:0 2rem; }
+    .nav-inner { max-width:780px; margin:0 auto; display:flex; align-items:center; height:56px; gap:1.5rem; }
+    .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:17px; color:var(--text); text-decoration:none; }
+    .nav-logo span { color:var(--accent); }
+    .nav-back { font-size:13px; color:var(--muted); text-decoration:none; }
+    .nav-back:hover { color:var(--text); }
+    .article-wrap { max-width:780px; margin:0 auto; padding:3rem 2rem 5rem; }
+    .article-tag { font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:.75rem; }
+    .article-wrap h1 { font-size:clamp(1.75rem,3.5vw,2.5rem); font-weight:800; margin-bottom:1rem; }
+    .article-meta { font-size:13px; color:var(--muted); margin-bottom:2.5rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .article-wrap h2 { font-size:1.4rem; font-weight:700; margin:2.5rem 0 .75rem; }
+    .article-wrap h3 { font-size:1.1rem; font-weight:700; margin:1.75rem 0 .5rem; }
+    .article-wrap p { margin-bottom:1.25rem; }
+    .article-wrap ul, .article-wrap ol { margin:0 0 1.25rem 1.5rem; }
+    .article-wrap li { margin-bottom:.5rem; }
+    .highlight-box { background:var(--bg-warm); border-left:3px solid var(--accent); border-radius:0 var(--radius) var(--radius) 0; padding:1.25rem 1.5rem; margin:2rem 0; }
+    .highlight-box strong { color:var(--accent); }
+    .formula-box { background:var(--text); color:var(--white); border-radius:var(--radius); padding:1.5rem; margin:2rem 0; font-family:monospace; font-size:15px; line-height:2; }
+    .formula-box span { color:#FCD34D; }
+    .data-table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; }
+    .data-table th { background:var(--text); color:var(--white); padding:10px 14px; text-align:left; font-family:'Syne',sans-serif; font-size:13px; }
+    .data-table td { padding:10px 14px; border-bottom:1px solid var(--border); }
+    .data-table tr:nth-child(even) td { background:var(--white); }
+    .factor-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+    .factor-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; }
+    .factor-card h4 { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; margin-bottom:.5rem; }
+    .factor-card p { font-size:13px; color:var(--muted); margin:0; line-height:1.6; }
+    .cta-block { background:var(--accent); color:var(--white); border-radius:var(--radius); padding:2rem; margin:3rem 0; text-align:center; }
+    .cta-block h3 { font-size:1.25rem; margin-bottom:.75rem; }
+    .cta-block p { font-size:14px; color:rgba(255,255,255,.8); margin-bottom:1.25rem; }
+    .cta-block a { display:inline-block; background:var(--white); color:var(--accent); padding:12px 28px; border-radius:999px; font-weight:700; text-decoration:none; font-size:15px; }
+    .related { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; margin-top:3rem; }
+    .related h3 { font-size:15px; font-weight:700; margin-bottom:1rem; }
+    .related a { display:block; color:var(--accent); text-decoration:none; font-size:14px; padding:.4rem 0; border-bottom:1px solid var(--border); }
+    .related a:last-child { border-bottom:none; }
+    .related a:hover { text-decoration:underline; }
+    @media(max-width:600px) { .factor-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">☀️ Solar<span>Rechner</span></a>
+    <a href="/" class="nav-back">← Zurück zum Rechner</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-tag">Finanzierung & ROI</div>
+  <h1>Photovoltaik Amortisation berechnen — so geht's richtig (2025)</h1>
+  <div class="article-meta">
+    <span>📅 Aktualisiert: Mai 2025</span>
+    <span>⏱ Lesezeit: ca. 7 Minuten</span>
+    <span>✍️ SolarRechner-Redaktion</span>
+  </div>
+
+  <p>Die Amortisationszeit ist die wichtigste Kennzahl bei der Entscheidung für eine Solaranlage. Sie sagt dir: Ab wann hat sich deine Investition bezahlt gemacht. In diesem Artikel erklären wir dir genau, wie du sie berechnest, welche Faktoren sie beeinflussen — und welche häufigen Fehler du vermeiden solltest.</p>
+
+  <h2>Was bedeutet Amortisation bei Photovoltaik?</h2>
+  <p>Die Amortisationsdauer (auch „Payback Period") ist der Zeitraum, nach dem die kumulierten Einnahmen aus der Solaranlage — also gesparter Strom plus Einspeisevergütung — die Investitionskosten vollständig gedeckt haben. Ab diesem Zeitpunkt arbeitet die Anlage wirtschaftlich für dich.</p>
+  <p>Da Solaranlagen in der Regel <strong>25 bis 30 Jahre</strong> halten, bedeutet eine Amortisation nach 10–12 Jahren, dass du noch 15–18 Jahre lang kostenlosen Strom produzierst.</p>
+
+  <h2>Die Formel: So berechnest du es</h2>
+  <p>Die grundlegende Formel ist einfach:</p>
+
+  <div class="formula-box">
+    <span>Amortisationsdauer (Jahre)</span> =
+    Investitionskosten (€) ÷ Jährlicher Gesamtertrag (€/Jahr)
+  </div>
+
+  <p>Der jährliche Gesamtertrag setzt sich aus zwei Teilen zusammen:</p>
+  <ol>
+    <li><strong>Einsparung durch Eigenverbrauch</strong>: Selbst verbrauchter Strom × aktueller Strompreis</li>
+    <li><strong>Einspeisevergütung</strong>: Eingespeister Überschussstrom × EEG-Tarif (8,11 ct/kWh für Anlagen bis 10 kWp, 2025)</li>
+  </ol>
+
+  <h3>Schritt-für-Schritt-Beispiel</h3>
+  <p>Nehmen wir eine 8-kWp-Anlage in Rheinland-Pfalz:</p>
+
+  <table class="data-table">
+    <thead><tr><th>Parameter</th><th>Wert</th></tr></thead>
+    <tbody>
+      <tr><td>Anlagenleistung</td><td>8 kWp</td></tr>
+      <tr><td>Spezifischer Jahresertrag (RLP)</td><td>1.010 kWh/kWp</td></tr>
+      <tr><td>Jahresertrag gesamt</td><td>8.080 kWh</td></tr>
+      <tr><td>Eigenverbrauchsanteil (ohne Batterie)</td><td>28 % → 2.262 kWh</td></tr>
+      <tr><td>Einspeisung</td><td>5.818 kWh</td></tr>
+      <tr><td>Einsparung Eigenverbrauch (à 0,34 €/kWh)</td><td>769 €/Jahr</td></tr>
+      <tr><td>Einspeisevergütung (à 0,0811 €/kWh)</td><td>472 €/Jahr</td></tr>
+      <tr><td>Gesamtertrag pro Jahr</td><td>1.241 €/Jahr</td></tr>
+      <tr><td>Investitionskosten (8 kWp × 1.850 €/kWp)</td><td>14.800 €</td></tr>
+      <tr><td><strong>Amortisationsdauer</strong></td><td><strong>11,9 Jahre</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <strong>Wichtig:</strong> Diese Berechnung berücksichtigt keine Strompreissteigerungen (historisch ca. 3–5 % pro Jahr), die die tatsächliche Amortisation weiter verkürzen würden. Unser Rechner oben verwendet einen konservativen Ansatz ohne Inflationsbereinigung.
+  </div>
+
+  <h2>Die 6 wichtigsten Faktoren für die Amortisationsdauer</h2>
+
+  <div class="factor-grid">
+    <div class="factor-card">
+      <h4>☀️ Sonnenstrahlung am Standort</h4>
+      <p>Bayern und Rheinland-Pfalz haben mehr Einstrahlung als Norddeutschland. Unterschied: bis zu 200 kWh/kWp/Jahr, was ca. 1 Jahr Amortisationszeit ausmacht.</p>
+    </div>
+    <div class="factor-card">
+      <h4>📐 Dachausrichtung & Neigung</h4>
+      <p>Ein optimal ausgerichtetes Süddach (35°) bringt 100 % Ertrag. Ein Westdach nur ca. 85 %. Das verlängert die Amortisation entsprechend.</p>
+    </div>
+    <div class="factor-card">
+      <h4>💡 Eigenverbrauchsquote</h4>
+      <p>Je mehr Solarstrom du selbst verbrauchst, desto besser: Eigenverbrauch bringt ca. 34 ct/kWh, Einspeisung nur 8 ct/kWh — also viermal so viel.</p>
+    </div>
+    <div class="factor-card">
+      <h4>💰 Investitionskosten</h4>
+      <p>Günstigere Angebote können die Amortisation um 1–2 Jahre verkürzen. Vergleiche mindestens 3 Angebote von lokalen Installateuren.</p>
+    </div>
+    <div class="factor-card">
+      <h4>🔋 Batteriespeicher</h4>
+      <p>Erhöht den Eigenverbrauch auf 60–70 %, verlängert aber die Gesamtamortisation, da der Speicher selbst 12–18 Jahre zur Amortisation braucht.</p>
+    </div>
+    <div class="factor-card">
+      <h4>📈 Strompreisentwicklung</h4>
+      <p>Steigt der Strompreis (historisch ca. 3–5 % pro Jahr), wird Eigenverbrauch wertvoller — die tatsächliche Amortisation verkürzt sich dadurch.</p>
+    </div>
+  </div>
+
+  <h2>Typische Amortisationszeiten nach Anlagengröße (RLP, 2025)</h2>
+
+  <table class="data-table">
+    <thead><tr><th>Anlagengröße</th><th>Geeignet für</th><th>Investition (ca.)</th><th>Amortisation (ca.)</th></tr></thead>
+    <tbody>
+      <tr><td>5 kWp</td><td>2-Personen-Haushalt</td><td>9.250 €</td><td>10–12 Jahre</td></tr>
+      <tr><td>8 kWp</td><td>4-Personen-Haushalt</td><td>14.800 €</td><td>11–13 Jahre</td></tr>
+      <tr><td>10 kWp</td><td>Großfamilie / E-Auto</td><td>18.500 €</td><td>11–13 Jahre</td></tr>
+      <tr><td>15 kWp</td><td>Großes Haus + Wärmepumpe</td><td>27.750 €</td><td>12–14 Jahre</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Häufige Fehler bei der Amortisationsberechnung</h2>
+  <ol>
+    <li><strong>Wartungskosten vergessen</strong>: Plane etwa 100–200 € pro Jahr für Versicherung, Reinigung und eventuelle Reparaturen ein.</li>
+    <li><strong>Wechselrichterlebensdauer</strong>: Wechselrichter müssen nach ca. 10–15 Jahren ersetzt werden. Kosten: 1.000–2.500 €. Rechne das ein.</li>
+    <li><strong>Degradation ignorieren</strong>: Solarmodule verlieren jährlich ca. 0,3–0,5 % ihrer Leistung. Nach 20 Jahren leistet eine Anlage noch ca. 90–94 % der Anfangsleistung.</li>
+    <li><strong>Nur Einspeisevergütung rechnen</strong>: Viele vergessen, den wertvolleren Eigenverbrauchsanteil zu berücksichtigen — das ergibt zu pessimistische Ergebnisse.</li>
+    <li><strong>Falschen Strompreis ansetzen</strong>: Prüfe deinen aktuellen Arbeitspreis ohne Grundgebühr für eine realistische Berechnung.</li>
+  </ol>
+
+  <h2>Ist eine Amortisation von 12 Jahren gut?</h2>
+  <p>Ja — eindeutig. Zum Vergleich: Eine klassische Festgeldanlage mit 3–4 % Zinsen würde 25–30 Jahre brauchen, um dieselbe Rendite zu erzielen. Eine Solaranlage mit 12 Jahren Amortisation und 25 Jahren Lebensdauer entspricht einer jährlichen Rendite von ca. <strong>6–9 %</strong> auf das eingesetzte Kapital — inflationsbereinigt und steuerfrei (bei Anlagen bis 30 kWp).</p>
+
+  <div class="cta-block">
+    <h3>Deine Amortisation sofort berechnen</h3>
+    <p>Gib deine individuellen Daten ein und erhalte deine persönliche Amortisationsdauer — in weniger als 30 Sekunden.</p>
+    <a href="/">Jetzt kostenlos berechnen</a>
+  </div>
+
+  <div class="related">
+    <h3>Weitere Artikel</h3>
+    <a href="lohnt-sich-solar-rheinland-pfalz.html">Solaranlage Rheinland-Pfalz 2025: Lohnt es sich wirklich?</a>
+    <a href="eeg-einspeisung-2025.html">EEG Einspeisevergütung 2025: Wie viel bekommst du für deinen Solarstrom?</a>
+  </div>
+</div>
+</body>
+</html>
