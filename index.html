@@ -2,12 +2,13 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-</script> content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solar-Rechner 2025 — Photovoltaik Rentabilität kostenlos berechnen</title>
   <meta name="description" content="Berechne kostenlos, ob sich eine Photovoltaik-Anlage für dein Haus lohnt. Mit EEG-Vergütung 2025, Eigenverbrauch, Amortisation und 20-Jahres-Bilanz. Für alle Bundesländer.">
   <meta name="keywords" content="Solaranlage Rechner, Photovoltaik Rechner, PV Rechner, Solaranlage rentabel, Photovoltaik Amortisation, EEG Vergütung 2025">
   <meta name="author" content="solarcheck-rlp.de">
-<link rel="canonical" href="https://solarcheck-rlp.de/">
+  <meta name="theme-color" content="#EA7C1E">
+  <link rel="canonical" href="https://solarcheck-rlp.de/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Solar-Rechner 2025 — Photovoltaik Rentabilität berechnen">
@@ -48,7 +49,7 @@
       --radius-sm: 8px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -56,8 +57,10 @@
       font-size: 16px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+    img { max-width: 100%; height: auto; }
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; overflow-wrap: break-word; }
 
     /* NAV */
     nav {
@@ -85,7 +88,7 @@
       background: var(--accent); color: var(--white);
       padding: 8px 20px; border-radius: 999px;
       font-size: 14px; font-weight: 500; text-decoration: none;
-      transition: opacity .2s;
+      transition: opacity .2s; white-space: nowrap;
     }
     .nav-cta:hover { opacity: .85; }
 
@@ -101,7 +104,7 @@
       font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
       padding: 4px 14px; border-radius: 999px; margin-bottom: 1.25rem;
     }
-    .hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1.25rem; color: var(--text); }
+    .hero h1 { font-size: clamp(2rem, 7vw, 3.2rem); font-weight: 800; margin-bottom: 1.25rem; color: var(--text); }
     .hero h1 span { color: var(--accent); }
     .hero-desc { font-size: 17px; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.75; }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -134,7 +137,7 @@
       font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
       color: var(--accent); margin-bottom: .75rem;
     }
-    .section-title { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 800; margin-bottom: 1rem; }
+    .section-title { font-size: clamp(1.6rem, 5vw, 2.25rem); font-weight: 800; margin-bottom: 1rem; }
     .section-desc { font-size: 16px; color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; line-height: 1.75; }
 
     /* CALCULATOR */
@@ -142,6 +145,7 @@
     .calc-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
     }
+    .calc-col { display: flex; flex-direction: column; gap: 1rem; }
     .calc-card {
       background: var(--white); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.5rem;
@@ -155,22 +159,26 @@
     .field:last-child { margin-bottom: 0; }
     .field label { font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 5px; }
     .field select, .field input[type=text] {
-      width: 100%; padding: 9px 12px;
+      width: 100%; padding: 11px 12px;
       border: 1px solid var(--border); border-radius: var(--radius-sm);
       background: var(--bg); color: var(--text);
-      font-family: 'DM Sans', sans-serif; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 16px;
       outline: none; transition: border-color .2s;
     }
     .field select:focus, .field input:focus { border-color: var(--accent); }
     .slider-wrap { display: flex; align-items: center; gap: 10px; }
-    .slider-wrap input[type=range] { flex: 1; -webkit-appearance: none; height: 4px; background: var(--border); border-radius: 2px; }
+    .slider-wrap input[type=range] { flex: 1; -webkit-appearance: none; appearance: none; height: 6px; background: var(--border); border-radius: 3px; }
     .slider-wrap input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none; width: 18px; height: 18px;
+      -webkit-appearance: none; appearance: none; width: 24px; height: 24px;
+      background: var(--accent); border-radius: 50%; cursor: pointer;
+    }
+    .slider-wrap input[type=range]::-moz-range-thumb {
+      width: 24px; height: 24px; border: none;
       background: var(--accent); border-radius: 50%; cursor: pointer;
     }
     .slider-num { font-size: 14px; font-weight: 600; min-width: 70px; text-align: right; color: var(--text); }
     .toggle-row { display: flex; align-items: center; gap: 10px; }
-    .toggle-row input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+    .toggle-row input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; }
     .toggle-row label { font-size: 14px; cursor: pointer; }
     .result-highlight {
       background: var(--bg-dark); color: var(--white);
@@ -207,7 +215,7 @@
     .cta-box h4 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
     .cta-box p { font-size: 13px; color: rgba(255,255,255,.75); margin-bottom: 1rem; }
     .cta-btn {
-      display: block; width: 100%; padding: 11px;
+      display: block; width: 100%; padding: 13px;
       background: var(--white); color: var(--accent);
       border: none; border-radius: var(--radius-sm);
       font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700;
@@ -216,6 +224,32 @@
     }
     .cta-btn:hover { opacity: .9; }
     .cta-note { font-size: 10px; color: rgba(255,255,255,.5); margin-top: 6px; text-align: center; }
+
+    /* PARTNER */
+    .partner-section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+    .partner-label { font-size: 12px; font-weight: 500; letter-spacing: .08em; color: #888; text-transform: uppercase; margin: 0 0 8px; }
+    .partner-title { font-size: clamp(1.4rem, 4vw, 1.6rem); font-weight: 700; margin: 0 0 6px; }
+    .partner-sub { font-size: 15px; color: #555; margin: 0 0 2rem; }
+    .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .partner-card {
+      background: #fff; border: 2px solid #1D9E75; border-radius: 12px;
+      padding: 1.25rem; display: flex; flex-direction: column; gap: 12px;
+    }
+    .partner-card-head { display: flex; justify-content: space-between; align-items: center; }
+    .partner-icon { width: 44px; height: 44px; border-radius: 8px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #555; }
+    .partner-badge { background: #E1F5EE; color: #085041; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+    .partner-name { font-size: 17px; font-weight: 600; margin: 0 0 2px; }
+    .partner-desc { font-size: 13px; color: #777; margin: 0; }
+    .partner-price { font-size: 26px; font-weight: 600; margin: 0; }
+    .partner-price span { font-size: 14px; font-weight: 400; color: #777; }
+    .partner-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .partner-list li { font-size: 13px; color: #555; }
+    .partner-btn {
+      display: block; text-align: center; padding: 13px 0; border-radius: 8px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      background: #1D9E75; color: #fff; margin-top: auto;
+    }
+    .partner-note { font-size: 12px; color: #aaa; margin-top: 1rem; }
 
     /* HOW IT WORKS */
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
@@ -277,19 +311,23 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-stats { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem 2rem; }
       .calc-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; gap: 1.5rem; }
       .blog-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
       nav { padding: 0 1rem; }
       .nav-links { display: none; }
       section { padding: 3rem 1rem; }
-      .hero { padding: 3rem 1rem 2rem; }
+      .partner-section { padding: 3rem 1rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; padding: 1.5rem; }
+      .hero-actions .btn-primary, .hero-actions .btn-secondary { flex: 1; text-align: center; }
+    }
+    @media (max-width: 360px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .result-main-num { font-size: 2.25rem; }
     }
   </style>
 </head>
@@ -330,7 +368,7 @@
       <div class="hero-stat-label">Durchschnittliche Amortisation in Deutschland</div>
     </div>
     <div>
-      <div class="hero-stat-num">€34/kWh</div>
+      <div class="hero-stat-num">34 ct/kWh</div>
       <div class="hero-stat-label">Ø Strompreis 2025 in Deutschland</div>
     </div>
     <div>
@@ -338,6 +376,7 @@
       <div class="hero-stat-label">Kostenlos & ohne Anmeldung</div>
     </div>
   </div>
+</div>
 
 <!-- CALCULATOR -->
 <section id="rechner">
@@ -348,10 +387,10 @@
 
     <div class="calc-grid">
       <!-- LEFT: Eingaben -->
-      <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="calc-col">
 
         <div class="calc-card">
-          <div class="calc-card-title">📍 Standort & Dach</div>
+          <div class="calc-card-title">📍 Standort &amp; Dach</div>
           <div class="field">
             <label for="bl">Bundesland</label>
             <select id="bl">
@@ -373,7 +412,6 @@
             <label>Verfügbare Dachfläche: <strong id="fl-val">40 m²</strong></label>
             <div class="slider-wrap">
               <input type="range" id="fl" min="10" max="200" step="5" value="40">
-              <span class="slider-num" style="display:none"></span>
             </div>
           </div>
           <div class="field">
@@ -397,7 +435,7 @@
         </div>
 
         <div class="calc-card">
-          <div class="calc-card-title">⚡ Strom & Verbrauch</div>
+          <div class="calc-card-title">⚡ Strom &amp; Verbrauch</div>
           <div class="field">
             <label>Jahresstromverbrauch: <strong id="vb-val">4.000 kWh</strong></label>
             <div class="slider-wrap">
@@ -425,8 +463,10 @@
           </div>
         </div>
 
+      </div>
+
       <!-- RIGHT: Ergebnisse -->
-      <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="calc-col">
 
         <div class="result-highlight">
           <div class="result-main-label">Ersparnis + Einnahmen pro Jahr</div>
@@ -493,67 +533,51 @@
 
         <div class="cta-box">
           <h4>Kostenlose Angebote einholen</h4>
-          <p>Geprüfte Installateure aus deiner Region — kostenlos & unverbindlich vergleichen.</p>
+          <p>Geprüfte Installateure aus deiner Region — kostenlos &amp; unverbindlich vergleichen.</p>
           <!-- ⚠️ AFFILIATE-LINK: Ersetze href mit deinem Affiliate-Link -->
           <a href="https://thesolarinnovator.com/index-solar-innovator-proof-new-auto.html#aff=unsolvedmysterychann8711" class="cta-btn" target="_blank" rel="noopener">
             Jetzt 3 kostenlose Angebote erhalten →
           </a>
           <p class="cta-note">Kostenlos · Unverbindlich · Geprüfte Fachbetriebe</p>
         </div>
-      </div>
-      
-        <!-- AFFILIATE PARTNER SEKTION -->
-<section style="padding: 3rem 1rem; max-width: 900px; margin: 0 auto;">
-  <p style="font-size:12px; font-weight:500; letter-spacing:.08em; color:#888; text-transform:uppercase; margin:0 0 8px;">Empfehlung</p>
-  <h2 style="font-size:24px; font-weight:600; margin:0 0 6px;">Jetzt Solaranlage anfragen — kostenlos & unverbindlich</h2>
-  <p style="font-size:15px; color:#555; margin:0 0 2rem;">Wir haben die besten Anbieter für dich geprüft.</p>
 
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px;">
-
-    <div style="background:#fff; border:2px solid #1D9E75; border-radius:12px; padding:1.25rem; display:flex; flex-direction:column; gap:12px;">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="width:44px;height:44px;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-weight:600;color:#555;">E</div>
-        <span style="background:#E1F5EE;color:#085041;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;">Empfehlung #1</span>
       </div>
-      <p style="font-size:17px;font-weight:600;margin:0 0 2px;">Enpal Solaranlage</p>
-      <p style="font-size:13px;color:#777;margin:0;">Komplettanlage inkl. Montage & Wartung</p>
-      <hr style="border:none;border-top:1px solid #eee;margin:0;">
-      <p style="font-size:26px;font-weight:600;margin:0;">300 € <span style="font-size:14px;font-weight:400;color:#777;">pro Anfrage</span></p>
-      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;">
-        <li style="font-size:13px;color:#555;">✓ Keine Anschaffungskosten</li>
-        <li style="font-size:13px;color:#555;">✓ Rundum-Sorglos-Paket inkl. Wartung</li>
-        <li style="font-size:13px;color:#555;">✓ Kostenlose Ertragsberechnung</li>
-        <li style="font-size:13px;color:#555;">✓ Marktführer — hohe Vertrauensrate</li>
-      </ul >Jetzt kostenlos anfragen →</a>
     </div>
-
-    <div style="background:#fff; border:1px solid #ddd; border-radius:12px; padding:1.25rem; display:flex; flex-direction:column; gap:12px;">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="width:44px;height:44px;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-weight:600;color:#555;">SC</div>
-        <span style="background:#EAF3DE;color:#27500A;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;">Empfehlung #2</span>
-      </div>
-      <p style="font-size:17px;font-weight:600;margin:0 0 2px;">Solarterrasse & Solarcarport</p>
-      <p style="font-size:13px;color:#777;margin:0;">Solar-Überdachung für Terrasse oder Stellplatz</p>
-      <hr style="border:none;border-top:1px solid #eee;margin:0;">
-      <p style="font-size:26px;font-weight:600;margin:0;">200 € <span style="font-size:14px;font-weight:400;color:#777;">pro Anfrage</span></p>
-      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;">
-        <li style="font-size:13px;color:#555;">✓ Verschattung + Stromerzeugung in einem</li>
-        <li style="font-size:13px;color:#555;">✓ Monatliche Einsparung amortisiert Kosten</li>
-        <li style="font-size:13px;color:#555;">✓ Ideal für Haus & Garten in RLP</li>
-        <li style="font-size:13px;color:#555;">✓ Unabhängig von Strompreisen</li>
-      </ul>
-      <a href="https://t.adcell.com/p/click?promoId=127910&slotId=149037&param0=https%3A%2F%2Fpremium-solarglas.com" style="display:block;text-align:center;padding:11px 0;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;background:#f5f5f5;color:#222;border:1px solid #ddd;margin-top:auto;">Jetzt Angebot anfordern →</a>
-    </div>
-
-  </div>
-  <p style="font-size:12px;color:#aaa;margin-top:1rem;">* Partnerlinks. Kostenlos & unverbindlich für dich.</p>
-</section>
-      </div>
 
     <p style="font-size:12px;color:var(--text-muted);margin-top:1.5rem;text-align:center">
       Alle Werte sind Richtwerte auf Basis öffentlich verfügbarer Daten. EEG-Einspeisevergütung: 8,11 ct/kWh (2025, Anlagen bis 10 kWp, Überschusseinspeisung). Keine Anlage- oder Steuerberatung.
     </p>
   </div>
+</section>
+
+<!-- AFFILIATE PARTNER SEKTION -->
+<section class="partner-section">
+  <p class="partner-label">Empfehlung</p>
+  <h2 class="partner-title">Jetzt Solaranlage anfragen — kostenlos &amp; unverbindlich</h2>
+  <p class="partner-sub">Wir haben die besten Anbieter für dich geprüft.</p>
+
+  <div class="partner-grid">
+
+    <div class="partner-card">
+      <div class="partner-card-head">
+        <div class="partner-icon">SC</div>
+        <span class="partner-badge">Unsere Empfehlung</span>
+      </div>
+      <p class="partner-name">Solarterrasse &amp; Solarcarport</p>
+      <p class="partner-desc">Solar-Überdachung für Terrasse oder Stellplatz</p>
+      <hr style="border:none;border-top:1px solid #eee;margin:0;">
+      <p class="partner-price">200 € <span>pro Anfrage</span></p>
+      <ul class="partner-list">
+        <li>✓ Verschattung + Stromerzeugung in einem</li>
+        <li>✓ Monatliche Einsparung amortisiert Kosten</li>
+        <li>✓ Ideal für Haus &amp; Garten in RLP</li>
+        <li>✓ Unabhängig von Strompreisen</li>
+      </ul>
+      <a href="https://t.adcell.com/p/click?promoId=127910&slotId=149037&param0=https%3A%2F%2Fpremium-solarglas.com" class="partner-btn" target="_blank" rel="noopener">Jetzt Angebot anfordern →</a>
+    </div>
+
+  </div>
+  <p class="partner-note">* Partnerlink. Kostenlos &amp; unverbindlich für dich.</p>
 </section>
 
 <!-- HOW IT WORKS -->
@@ -565,7 +589,7 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>Dach & Standort eingeben</h3>
+        <h3>Dach &amp; Standort eingeben</h3>
         <p>Wähle dein Bundesland, die verfügbare Dachfläche und die Ausrichtung. Diese Werte bestimmen, wie viel Sonnenstrom deine Anlage erzeugen kann.</p>
       </div>
       <div class="step">
@@ -575,7 +599,7 @@
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>Ergebnis & Angebote</h3>
+        <h3>Ergebnis &amp; Angebote</h3>
         <p>Du siehst sofort Jahresertrag, Amortisationsdauer und 20-Jahres-Bilanz. Im nächsten Schritt kannst du kostenlose Angebote von Installateuren einholen.</p>
       </div>
     </div>
@@ -586,7 +610,7 @@
 <section id="faq">
   <div class="section-inner">
     <div class="section-label">Häufige Fragen</div>
-    <h2 class="section-title">Alles zu Photovoltaik & Rentabilität</h2>
+    <h2 class="section-title">Alles zu Photovoltaik &amp; Rentabilität</h2>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
@@ -654,19 +678,19 @@
     <p class="section-desc">Aktuelle Artikel zu Photovoltaik, EEG-Vergütung und Rentabilität.</p>
     <div class="blog-grid">
       <a href="blog/lohnt-sich-solar-rheinland-pfalz.html" class="blog-card">
-        <div class="blog-tag">Standort & Ertrag</div>
+        <div class="blog-tag">Standort &amp; Ertrag</div>
         <h3>Lohnt sich eine Solaranlage in Rheinland-Pfalz? (2025)</h3>
         <p>Sonnenstunden, Ertragsdaten und eine echte Beispielrechnung für Hausbesitzer in RLP.</p>
         <div class="blog-card-footer">Artikel lesen →</div>
       </a>
       <a href="blog/photovoltaik-amortisation-berechnen.html" class="blog-card">
-        <div class="blog-tag">Finanzierung & ROI</div>
+        <div class="blog-tag">Finanzierung &amp; ROI</div>
         <h3>Photovoltaik Amortisation berechnen — so geht's richtig (2025)</h3>
         <p>Welche Faktoren die Amortisation beeinflussen und wie du sie korrekt berechnest.</p>
         <div class="blog-card-footer">Artikel lesen →</div>
       </a>
       <a href="blog/eeg-einspeisung-2025.html" class="blog-card">
-        <div class="blog-tag">EEG & Vergütung</div>
+        <div class="blog-tag">EEG &amp; Vergütung</div>
         <h3>EEG Einspeisevergütung 2025: Wie viel bekommst du für deinen Solarstrom?</h3>
         <p>Aktuelle Tarife, Unterschied zwischen Voll- und Überschusseinspeisung — einfach erklärt.</p>
         <div class="blog-card-footer">Artikel lesen →</div>
