@@ -329,6 +329,18 @@
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .result-main-num { font-size: 2.25rem; }
     }
+
+    /* AD BANNER (Adcell 468x60, responsiv skaliert) */
+    .ad-band { padding: 2.5rem 1rem; text-align: center; background: var(--bg); }
+    .ad-label { font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+    .ad-scale-outer {
+      width: 100%; max-width: 468px; margin: 0 auto;
+      aspect-ratio: 468 / 60; overflow: hidden; position: relative;
+    }
+    .ad-scale-inner {
+      position: absolute; top: 0; left: 0;
+      width: 468px; height: 60px; transform-origin: top left;
+    }
   </style>
 </head>
 <body>
@@ -547,6 +559,24 @@
     <p style="font-size:12px;color:var(--text-muted);margin-top:1.5rem;text-align:center">
       Alle Werte sind Richtwerte auf Basis öffentlich verfügbarer Daten. EEG-Einspeisevergütung: 8,11 ct/kWh (2025, Anlagen bis 10 kWp, Überschusseinspeisung). Keine Anlage- oder Steuerberatung.
     </p>
+  </div>
+</section>
+
+<!-- ADCELL WERBEBANNER (468x60) -->
+<section class="ad-band" id="ad-band">
+  <div class="ad-label">Anzeige</div>
+  <div class="ad-scale-outer">
+    <div class="ad-scale-inner" id="adcell-347445">
+      <script type="text/javascript" src="https://t.adcell.com/js/jsadlib.js"></script>
+      <script type="text/javascript">
+        try {
+          Adcell.user.setPartnerId("149037");
+          Adcell.user.getAd({ "wid": 347445, "target": "_blank" });
+        } catch (e) {
+          /* Banner wird nur auf der Live-Domain solarcheck-rlp.de ausgeliefert */
+        }
+      </script>
+    </div>
   </div>
 </section>
 
@@ -807,6 +837,34 @@ function toggleFaq(btn) {
   document.querySelectorAll('.faq-q.open').forEach(el => el.classList.remove('open'));
   if (!isOpen) { a.classList.add('open'); btn.classList.add('open'); }
 }
+
+// Adcell-Banner an die Bildschirmbreite anpassen
+function fitBanner() {
+  document.querySelectorAll('.ad-scale-outer').forEach(function (outer) {
+    var inner = outer.querySelector('.ad-scale-inner');
+    if (!inner) return;
+    var scale = Math.min(1, outer.clientWidth / 468);
+    inner.style.transform = 'scale(' + scale + ')';
+  });
+}
+
+// Banner-Block ausblenden, falls kein Werbemittel geladen wurde
+// (z. B. in der Vorschau oder wenn das Adcell-Programm inaktiv ist)
+function checkBanner() {
+  var inner = document.getElementById('adcell-347445');
+  var band = document.getElementById('ad-band');
+  if (!inner || !band) return;
+  var hasCreative = Array.prototype.some.call(inner.children, function (el) {
+    return el.tagName === 'IMG' || el.tagName === 'IFRAME' || el.tagName === 'INS' || el.tagName === 'A';
+  });
+  if (hasCreative) { band.style.display = ''; fitBanner(); }
+  else { band.style.display = 'none'; }
+}
+
+window.addEventListener('resize', fitBanner);
+window.addEventListener('load', function () { fitBanner(); checkBanner(); });
+fitBanner();
+setTimeout(function () { fitBanner(); checkBanner(); }, 1500);
 
 upd();
 </script>
