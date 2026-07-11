@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solar-Rechner 2025 — Photovoltaik Rentabilität kostenlos berechnen</title>
-  <meta name="description" content="Berechne kostenlos, ob sich eine Photovoltaik-Anlage für dein Haus lohnt. Mit EEG-Vergütung 2025, Eigenverbrauch, Amortisation und 20-Jahres-Bilanz. Für alle Bundesländer.">
+  <title>SolarCheck RLP — Photovoltaik Rentabilität in Rheinland-Pfalz berechnen</title>
+  <meta name="description" content="Berechne kostenlos, ob sich eine Photovoltaik-Anlage für dein Haus in Rheinland-Pfalz lohnt. Mit EEG-Vergütung 2025, Eigenverbrauch, Amortisation und 20-Jahres-Bilanz.">
   <meta name="keywords" content="Solaranlage Rechner, Photovoltaik Rechner, PV Rechner, Solaranlage rentabel, Photovoltaik Amortisation, EEG Vergütung 2025">
   <meta name="author" content="solarcheck-rlp.de">
   <meta name="theme-color" content="#EA7C1E">
   <link rel="canonical" href="https://solarcheck-rlp.de/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Solar-Rechner 2025 — Photovoltaik Rentabilität berechnen">
-  <meta property="og:description" content="Kostenloser Rechner: Lohnt sich eine PV-Anlage für dein Haus? Amortisation, Jahresertrag und 20-Jahres-Bilanz — live berechnet.">
+  <meta property="og:title" content="SolarCheck RLP — Photovoltaik Rentabilität in Rheinland-Pfalz berechnen">
+  <meta property="og:description" content="Kostenloser Rechner für Rheinland-Pfalz: Lohnt sich eine PV-Anlage für dein Haus? Amortisation, Jahresertrag und 20-Jahres-Bilanz — live berechnet.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
 
@@ -21,7 +21,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Solar-Rechner Deutschland 2025",
+    "name": "SolarCheck RLP",
     "description": "Kostenloser Photovoltaik Rentabilitätsrechner für deutsche Hausbesitzer",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
@@ -232,12 +232,12 @@
     .partner-sub { font-size: 15px; color: #555; margin: 0 0 2rem; }
     .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
     .partner-card {
-      background: #fff; border: 2px solid #1D9E75; border-radius: 12px;
+      background: #fff; border: 2px solid var(--accent); border-radius: 12px;
       padding: 1.25rem; display: flex; flex-direction: column; gap: 12px;
     }
     .partner-card-head { display: flex; justify-content: space-between; align-items: center; }
     .partner-icon { width: 44px; height: 44px; border-radius: 8px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #555; }
-    .partner-badge { background: #E1F5EE; color: #085041; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+    .partner-badge { background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; white-space: nowrap; }
     .partner-name { font-size: 17px; font-weight: 600; margin: 0 0 2px; }
     .partner-desc { font-size: 13px; color: #777; margin: 0; }
     .partner-price { font-size: 26px; font-weight: 600; margin: 0; }
@@ -247,7 +247,7 @@
     .partner-btn {
       display: block; text-align: center; padding: 13px 0; border-radius: 8px;
       font-size: 14px; font-weight: 600; text-decoration: none;
-      background: #1D9E75; color: #fff; margin-top: auto;
+      background: var(--accent); color: #fff; margin-top: auto;
     }
     .partner-note { font-size: 12px; color: #aaa; margin-top: 1rem; }
 
@@ -356,7 +356,7 @@
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo">☀️ Solar<span class="logo-dot">Rechner</span></a>
+    <a href="/" class="nav-logo">☀️ SolarCheck<span class="logo-dot"> RLP</span></a>
     <ul class="nav-links">
       <li><a href="#rechner">Rechner</a></li>
       <li><a href="#so-funktionierts">Wie es funktioniert</a></li>
@@ -370,9 +370,9 @@
 <!-- HERO -->
 <div class="hero">
   <div>
-    <div class="hero-badge">☀️ Aktuell: EEG-Vergütung 2025</div>
-    <h1>Lohnt sich <span>Photovoltaik</span> für dein Haus?</h1>
-    <p class="hero-desc">Berechne kostenlos in 30 Sekunden, wie viel du mit einer Solaranlage sparst — mit den aktuellen Tarifen, deinem Bundesland und deinem Verbrauch.</p>
+    <div class="hero-badge">☀️ Für Rheinland-Pfalz · EEG-Vergütung 2025</div>
+    <h1>Lohnt sich <span>Photovoltaik</span> für dein Haus in Rheinland-Pfalz?</h1>
+    <p class="hero-desc">Berechne kostenlos in 30 Sekunden, wie viel du mit einer Solaranlage in Rheinland-Pfalz sparst — mit den aktuellen Tarifen, deiner Region und deinem Verbrauch. <span id="hero-jg-copy"></span></p>
     <div class="hero-actions">
       <a href="#rechner" class="btn-primary">Jetzt kostenlos berechnen</a>
       <a href="#so-funktionierts" class="btn-secondary">Wie funktioniert das?</a>
@@ -397,6 +397,32 @@
     </div>
   </div>
 </div>
+
+<!-- HOW IT WORKS -->
+<section id="so-funktionierts">
+  <div class="section-inner">
+    <div class="section-label">So funktioniert es</div>
+    <h2 class="section-title">In 3 Schritten zur Antwort</h2>
+    <p class="section-desc">Der Rechner nutzt reale Sonneneinstrahldaten nach Bundesland und aktuelle EEG-Tarife.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Dach & Standort eingeben</h3>
+        <p>Wähle dein Bundesland, die verfügbare Dachfläche und die Ausrichtung. Diese Werte bestimmen, wie viel Sonnenstrom deine Anlage erzeugen kann.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Stromverbrauch anpassen</h3>
+        <p>Gib deinen jährlichen Stromverbrauch und den aktuellen Strompreis ein. Der Rechner ermittelt daraus deinen Eigenverbrauchsanteil und die mögliche Einsparung.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Ergebnis & Angebote</h3>
+        <p>Du siehst sofort Jahresertrag, Amortisationsdauer und 20-Jahres-Bilanz. Im nächsten Schritt kannst du kostenlose Angebote von Installateuren einholen.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CALCULATOR -->
 <section id="rechner">
@@ -553,7 +579,7 @@
 
         <div class="cta-box">
           <h4>Kostenlose Angebote einholen</h4>
-          <p>Geprüfte Installateure aus deiner Region — kostenlos & unverbindlich vergleichen.</p>
+          <p>Geprüfte Installateure aus deiner Region — kostenlos & unverbindlich vergleichen. <span id="cta-jg-copy"></span></p>
           <!-- ⚠️ AFFILIATE-LINK: Ersetze href mit deinem Affiliate-Link -->
           <a href="https://t.adcell.com/p/click?promoId=127910&slotId=149037&param0=https%3A%2F%2Fpremium-solarglas.com" class="cta-btn" target="_blank" rel="noopener">
             Jetzt 3 kostenlose Angebote erhalten →
@@ -567,24 +593,6 @@
     <p style="font-size:12px;color:var(--text-muted);margin-top:1.5rem;text-align:center">
       Alle Werte sind Richtwerte auf Basis öffentlich verfügbarer Daten. EEG-Einspeisevergütung: 8,11 ct/kWh (2025, Anlagen bis 10 kWp, Überschusseinspeisung). Keine Anlage- oder Steuerberatung.
     </p>
-  </div>
-</section>
-
-<!-- ADCELL WERBEBANNER (468x60) -->
-<section class="ad-band" id="ad-band">
-  <div class="ad-label">Anzeige</div>
-  <div class="ad-scale-outer">
-    <div class="ad-scale-inner" id="adcell-347445">
-      <script type="text/javascript" src="https://t.adcell.com/js/jsadlib.js"></script>
-      <script type="text/javascript">
-        try {
-          Adcell.user.setPartnerId("149037");
-          Adcell.user.getAd({ "wid": 347445, "target": "_blank" });
-        } catch (e) {
-          /* Banner wird nur auf der Live-Domain solarcheck-rlp.de ausgeliefert */
-        }
-      </script>
-    </div>
   </div>
 </section>
 
@@ -618,28 +626,20 @@
   <p class="partner-note">* Partnerlink. Kostenlos & unverbindlich für dich.</p>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="so-funktionierts">
-  <div class="section-inner">
-    <div class="section-label">So funktioniert es</div>
-    <h2 class="section-title">In 3 Schritten zur Antwort</h2>
-    <p class="section-desc">Der Rechner nutzt reale Sonneneinstrahldaten nach Bundesland und aktuelle EEG-Tarife.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Dach & Standort eingeben</h3>
-        <p>Wähle dein Bundesland, die verfügbare Dachfläche und die Ausrichtung. Diese Werte bestimmen, wie viel Sonnenstrom deine Anlage erzeugen kann.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Stromverbrauch anpassen</h3>
-        <p>Gib deinen jährlichen Stromverbrauch und den aktuellen Strompreis ein. Der Rechner ermittelt daraus deinen Eigenverbrauchsanteil und die mögliche Einsparung.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Ergebnis & Angebote</h3>
-        <p>Du siehst sofort Jahresertrag, Amortisationsdauer und 20-Jahres-Bilanz. Im nächsten Schritt kannst du kostenlose Angebote von Installateuren einholen.</p>
-      </div>
+<!-- ADCELL WERBEBANNER (468x60) -->
+<section class="ad-band" id="ad-band">
+  <div class="ad-label">Anzeige</div>
+  <div class="ad-scale-outer">
+    <div class="ad-scale-inner" id="adcell-347445">
+      <script type="text/javascript" src="https://t.adcell.com/js/jsadlib.js"></script>
+      <script type="text/javascript">
+        try {
+          Adcell.user.setPartnerId("149037");
+          Adcell.user.getAd({ "wid": 347445, "target": "_blank" });
+        } catch (e) {
+          /* Banner wird nur auf der Live-Domain solarcheck-rlp.de ausgeliefert */
+        }
+      </script>
     </div>
   </div>
 </section>
@@ -737,11 +737,22 @@
   </div>
 </section>
 
+
+<!-- ABSCHLUSS-CTA -->
+<section class="partner-section" style="text-align:center; padding-top: 2rem;">
+  <h2 class="section-title" style="margin-bottom: 0.75rem;">Bereit für deine eigene Solaranlage?</h2>
+  <p class="section-desc" style="margin-bottom: 1.75rem;">Berechne jetzt kostenlos deine persönliche Ersparnis oder hol dir direkt unverbindliche Angebote aus Rheinland-Pfalz.</p>
+  <div class="hero-actions" style="justify-content:center;">
+    <a href="#rechner" class="btn-primary">Jetzt kostenlos berechnen</a>
+    <a href="https://t.adcell.com/p/click?promoId=127910&slotId=149037&param0=https%3A%2F%2Fpremium-solarglas.com" class="btn-secondary" target="_blank" rel="noopener">Angebote anfordern →</a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">☀️ SolarRechner</div>
+      <div class="footer-brand">☀️ SolarCheck RLP</div>
       <p class="footer-desc">Kostenloser Photovoltaik-Rentabilitätsrechner für Hausbesitzer in Deutschland. Alle Berechnungen basieren auf öffentlich verfügbaren Daten und aktuellen EEG-Tarifen.</p>
     </div>
     <div class="footer-col">
@@ -762,7 +773,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 SolarRechner.de · Keine Anlage- oder Steuerberatung. Alle Angaben ohne Gewähr. EEG-Vergütung: 8,11 ct/kWh (Stand: 2025, Anlagen bis 10 kWp, Überschusseinspeisung).</p>
+    <p>© 2025 SolarCheck-RLP.de · Keine Anlage- oder Steuerberatung. Alle Angaben ohne Gewähr. EEG-Vergütung: 8,11 ct/kWh (Stand: 2025, Anlagen bis 10 kWp, Überschusseinspeisung).</p>
   </div>
 </footer>
 
@@ -803,6 +814,11 @@ function upd() {
   const co2 = ertrag * 0.380;
 
   document.getElementById('jg').textContent = eur(jg);
+  var jgCopy = 'Bei deinen Angaben: ca. ' + eur(jg) + ' Ersparnis pro Jahr.';
+  var heroJg = document.getElementById('hero-jg-copy');
+  if (heroJg) heroJg.textContent = jgCopy;
+  var ctaJg = document.getElementById('cta-jg-copy');
+  if (ctaJg) ctaJg.textContent = jgCopy;
   document.getElementById('kwp').textContent = kWp.toFixed(1) + ' kWp';
   document.getElementById('am').textContent = amort.toFixed(1) + ' Jahre';
 
